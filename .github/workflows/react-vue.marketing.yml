@@ -1,4 +1,4 @@
-name: react-vue deploy container
+name: react-vue deploy marketing
 
 on:
   workflow_dispatch:
@@ -6,11 +6,11 @@ on:
     branches:
       - master
     paths:
-      - 'react-vue/container/**'
+      - 'react-vue/marketing/**'
 
 defaults:
   run:
-    working-directory: 'react-vue/container'
+    working-directory: 'react-vue/marketing'
 
 jobs:
   build:
@@ -25,18 +25,16 @@ jobs:
 
       - name: Build artifacts
         run: npm run build
-        env:
-          PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
 
       - name: Sync dist directory with s3
-        run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
+        run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/marketing/latest
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ap-south-1
 
-      - name: Create invalidation for container's invalidation
-        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/container/latest/index.html"
+      - name: Create invalidation for marketing's invalidation
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/marketing/latest/remoteEntry.js"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
