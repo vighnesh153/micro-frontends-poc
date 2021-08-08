@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import { mount } from "marketing/bootstrap";
+import { mount } from "auth/bootstrap";
 
 
-const MarketingApp = () => {
+const AuthApp = ({ onSignIn }) => {
   const history = useHistory();
   const ref = useRef(null);
 
@@ -17,6 +17,7 @@ const MarketingApp = () => {
           history.push(nextPathName);
         }
       },
+      onSignIn,
     });
 
     history.listen(childOptions.onParentNavigate);
@@ -27,4 +28,4 @@ const MarketingApp = () => {
   );
 };
 
-export default MarketingApp;
+export default AuthApp;
