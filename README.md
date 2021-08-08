@@ -1,5 +1,7 @@
 # Micro-Frontends
 
+[You can visit the react-vue micro-frontend app here](https://react-vue-mfe.poc.vighnesh153.com).
+
 ### Routing
 There are 3 types of routing techniques in SPAs
 * Browser History Routing
@@ -11,17 +13,17 @@ It is a routing technique that maintains the route state via the URL. It pushes/
 the browser's route stack.
 
 Examples:
-https://vighnesh153.com
-https://vighnesh153.com/experience
-https://vighnesh153.com/connect
+* https://vighnesh153.com
+* https://vighnesh153.com/experience
+* https://vighnesh153.com/connect
 
 ##### Hash Routing (Shitty one. No one uses this anymore because this is ugly)
 It is a routing technique where we store the routes' path part as routes' hash in the URL.
 
 Examples:
-https://vighnesh153.com
-https://vighnesh153.com/#/experience
-https://vighnesh153.com/#/connect
+* https://vighnesh153.com
+* https://vighnesh153.com/#/experience
+* https://vighnesh153.com/#/connect
 
 ##### In-Memory History Routing
 It is a routing technique where we store the routes in-memory of the app. If we reload the page, 
